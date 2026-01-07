@@ -45,11 +45,12 @@ if submitted:
     output_path = generate_document(document_type, data)
     st.success("Document generated successfully!")
     st.download_button(
-        "Download PDF",
+        "Download Word",
         open(output_path, "rb"),
         file_name=output_path.name
 
     )
+
 
 
 
