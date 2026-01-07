@@ -22,26 +22,22 @@ CONFIG = {
 
 
 
-def generate_document(document_type, data):
-    
-    config = CONFIG[document_type]
 
+def generate_document(template_path, data):
 
-    template_path= config["template"]
-    output_prefix = config["output_prefix"] 
-
+    template_path = Path(template_path) 
     template = DocxTemplate(template_path)
 
+    # Crée un dossier output s'il n'existe pas
     output_dir = BASE_DIR / "output"
     output_dir.mkdir(exist_ok=True)
 
+    # Nom unique pour éviter les collisions
     unique_id = uuid.uuid4().hex[:8]
+    docx_file = output_dir / f"{template_path.stem}_{unique_id}.docx"
 
-    docx_file = output_dir / f"{output_prefix}_{unique_id}.docx"
-
-    template = DocxTemplate(template_path)
+    # Remplit les placeholders
     template.render(data)
     template.save(docx_file)
-
 
     return docx_file
