@@ -5,10 +5,8 @@ st.set_page_config(page_title="Document Generator", layout="wide")
 
 
 
-document_type = st.sidebar.selectbox(
-    "Select Document Type",
-    ["contract", "invoice", "report"]
-)
+document_type = st.selectbox("Select Document Type",["Contract", "Invoice", "Report", "Custom Upload"])
+
 st.write("Generate documents from templates. Use predefined types or upload your own template.")
 
 data = {}
@@ -71,5 +69,6 @@ else:
             docx_file = generate_document(template_path, data)
             st.success(f"Document generated: {docx_file.name}")
             st.download_button("Download DOCX", open(docx_file, "rb"), file_name=docx_file.name)
+
 
 
