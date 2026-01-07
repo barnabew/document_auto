@@ -22,11 +22,6 @@ CONFIG = {
 }
 
 
-# Validate document type
-if DOCUMENT_TYPE not in CONFIG:
-    raise ValueError(f"Unknown document type: {DOCUMENT_TYPE}")
-
-
 
 def generate_document(document_type, data):
     
