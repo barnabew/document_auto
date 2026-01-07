@@ -1,4 +1,6 @@
 import streamlit as st
+from pathlib import Path
+from docxtpl import DocxTemplate
 from generate_documents import generate_document
 
 st.set_page_config(page_title="Document Generator", layout="wide")
@@ -69,6 +71,7 @@ else:
             docx_file = generate_document(template_path, data)
             st.success(f"Document generated: {docx_file.name}")
             st.download_button("Download DOCX", open(docx_file, "rb"), file_name=docx_file.name)
+
 
 
 
