@@ -44,9 +44,10 @@ if document_type != "Custom Upload":
     
     
     if submitted:
-        output_path = generate_document(document_type, data)
-        st.success("Document generated successfully!")
-        st.download_button("Download DOCX",open(output_path, "rb"),file_name=output_path.name)
+        template_path = Path(f"templates/{document_type.lower()}_template.docx")
+        docx_file = generate_document(template_path, data)
+        st.success(f"Document generated: {docx_file.name}")
+        st.download_button("Download DOCX", open(docx_file, "rb"), file_name=docx_file.name)
 
 
 else:
@@ -71,6 +72,7 @@ else:
             docx_file = generate_document(template_path, data)
             st.success(f"Document generated: {docx_file.name}")
             st.download_button("Download DOCX", open(docx_file, "rb"), file_name=docx_file.name)
+
 
 
 
