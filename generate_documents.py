@@ -1,7 +1,6 @@
 import uuid
 from docxtpl import DocxTemplate
 from pathlib import Path
-from docx2pdf import convert
 
 BASE_DIR = Path(__file__).resolve().parent
 
@@ -39,16 +38,10 @@ def generate_document(document_type, data):
     unique_id = uuid.uuid4().hex[:8]
 
     docx_file = output_dir / f"{output_prefix}_{unique_id}.docx"
-    pdf_file = output_dir / f"{output_prefix}_{unique_id}.pdf"
 
     template = DocxTemplate(template_path)
     template.render(data)
     template.save(docx_file)
 
-    # Conversion PDF
-    convert(docx_file, pdf_file)
 
-    # Supprimer le DOCX (optionnel mais recommandé)
-    docx_file.unlink()
-
-    return pdf_file
+    return docx_file
