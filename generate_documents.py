@@ -3,7 +3,7 @@ from docxtpl import DocxTemplate
 from pathlib import Path
 from docx2pdf import convert
 
-BASE_DIR = Path(__file__).resolve().parent.parent # Adjusted to go up one level
+BASE_DIR = Path(__file__).resolve().parent
 
 
 CONFIG = {
