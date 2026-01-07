@@ -1,6 +1,6 @@
 import streamlit as st
 import pandas as pd
-
+from generate_documents import generate
 
 st.set_page_config(page_title="Document Generator", layout="wide")
 
@@ -46,4 +46,5 @@ if submitted:
         "Download PDF",
         open(output_path, "rb"),
         file_name=output_path.name
+
     )
