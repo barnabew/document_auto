@@ -16,24 +16,27 @@ with st.form("document_form"):
     data = {}
 
     if document_type == "contract":
-            data["client_name"] = st.text_input("Client Name")
-            data["address"] = st.text_input("Address")
-            data["start_date"] = st.text_input("Start Date (YYYY-MM-DD)")
-            data["end_date"] = st.text_input("End Date (YYYY-MM-DD)")
-            data["amount"] = st.number_input("Amount (€)", min_value=0.0)
-            data["subject"] = st.text_input("Subject")
+            data["ClientName"] = st.text_input("Client Name")
+            data["Address"] = st.text_input("Address")
+            data["StartDate"] = st.text_input("Start Date (YYYY-MM-DD)")
+            data["EndDate"] = st.text_input("End Date (YYYY-MM-DD)")
+            data["Amount"] = st.number_input("Amount (€)", min_value=0.0)
+            data["Subject"] = st.text_input("Subject")
     elif document_type == "invoice":
-            data["client_name"] = st.text_input("Client Name")
-            data["invoice_number"] = st.text_input("Invoice Number")
-            data["date"] = st.text_input("Date (YYYY-MM-DD)")
-            data["items"] = st.text_area("Items (one per line, format: description,quantity,price)")
-            data["total_amount"] = st.number_input("Total Amount (€)", min_value=0.0)
+            data["ClientNname"] = st.text_input("Client Name")
+            data["Address"] = st.text_input("Address")
+            data["InvoiceDate"] = st.text_input("Invoice Date (YYYY-MM-DD)")
+            data["InvoiceNumber"] = st.text_input("Invoice Number")
+            data["Amount"] = st.number_input("Amount (€)", min_value=0.0)
+            data["Description"] = st.text_input("Description")
     elif document_type == "report":
-            data["report_title"] = st.text_input("Report Title")
-            data["author"] = st.text_input("Author")
-            data["date"] = st.text_input("Date (YYYY-MM-DD)")
-            data["summary"] = st.text_area("Summary")
-            data["conclusion"] = st.text_area("Conclusion")
+            data["Start_date"] = st.text_input("Start Date (YYYY-MM-DD)")
+            data["EndDate"] = st.text_input("End Date (YYYY-MM-DD)")
+            data["KPI1"] = st.number_input("KPI1 (€)", min_value=0.0)
+            data["KPI1"] = st.number_input("KPI2")
+            data["KPI1"] = st.number_input("KPI3 (%)", min_value=0.0)
+            data["Summary"] = st.text_area("Summary")
+            
     
     submitted = st.form_submit_button("Generate Document")
 
@@ -47,5 +50,6 @@ if submitted:
         file_name=output_path.name
 
     )
+
 
 
